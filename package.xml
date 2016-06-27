@@ -1,0 +1,37 @@
+<package>
+    <name>gentl_tof_driver</name>
+    <version>1.0</version>
+    <description>
+
+     GenTL time of flight camera driver for ROS
+
+    </description>
+    <author email="jan.frost@draeger.com">Jan Frost</author>
+    <author>Lasse Hansen</author>
+    <author>Joscha Stelljes</author>
+    <maintainer email="himstedt@iti.uni-luebeck.de">Marian Himstedt</maintainer>
+    <license>BSD</license>
+    <url>http://ros.org/wiki/gentl_tof_driver</url>
+    <buildtool_depend>catkin</buildtool_depend>
+    <build_depend>rospy</build_depend>
+    <build_depend>roscpp</build_depend>
+    <build_depend>std_msgs</build_depend>
+    <build_depend>sensor_msgs</build_depend>
+    <build_depend>tf</build_depend>
+    <build_depend>cv_bridge</build_depend>
+    <build_depend>pcl_ros</build_depend>
+    <build_depend>libpcl-all-dev</build_depend>
+
+    <run_depend>rospy</run_depend>
+    <run_depend>roscpp</run_depend>
+    <run_depend>std_msgs</run_depend>
+    <run_depend>sensor_msgs</run_depend>
+    <run_depend>tf</run_depend>
+    <run_depend>cv_bridge</run_depend>
+    <run_depend>pcl_ros</run_depend>
+    <run_depend>libpcl-all</run_depend>
+
+
+</package>
+
+

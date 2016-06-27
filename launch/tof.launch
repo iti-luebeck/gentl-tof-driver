@@ -1,0 +1,32 @@
+<launch>
+
+  <arg name="cti_path" default="/opt/BaslerToF/lib64/gentlproducer/gtl/ProducerTOF.cti" />
+
+  <!-- "camera" should uniquely identify the device. All topics are pushed down
+       into the "camera" namespace, and it is prepended to tf frame ids. -->
+  <arg name="camera" default="camera" />
+  <arg name="frame_id"   default="$(arg camera)_optical_frame" />
+  <arg name="pi/2" value="1.5707963267948966" />
+  <arg name="optical_rotate" value="0 0 0 -$(arg pi/2) 0 -$(arg pi/2)" />
+
+  <!-- device_id can have the following formats:
+        "21759744" : Use device with given serial number
+        "first"    : Use first device found
+    -->
+  <arg name="device_id" default="first" />
+
+  <!-- Push down all topics/nodelets into "camera" namespace -->
+  <group ns="$(arg camera)">
+
+    <node pkg="tf" type="static_transform_publisher" name="$(arg camera)_base_link"
+      args="$(arg optical_rotate) $(arg camera)_link $(arg frame_id) 100" />  
+    
+    <node pkg="gentl_tof_driver" type="gentl_wrapper_node" name="$(arg camera)_node" output="screen">
+      <param name="cti_path"  value="$(arg cti_path)"  />
+      <param name="frame_id"  value="$(arg frame_id)"  />
+      <param name="device_id" value="$(arg device_id)" />
+    </node>
+
+  </group>
+
+</launch>
